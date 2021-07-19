@@ -16,8 +16,9 @@ def create_app():
     
     @app.route('/', methods=["GET", "POST"])
     def home():
-        if request.form:
-            print(request.form)
-        return render_template("home.html")
+        # if request.form:
+        #     print(request.form)
+        users = User.query.all()
+        return render_template("home.html", title='home', users = User.query.all())
     
     return app
